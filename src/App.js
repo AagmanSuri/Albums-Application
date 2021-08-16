@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Photo from "./Photo";
+
 function App() {
   const AlbumsUrl = "https://jsonplaceholder.typicode.com/albums";
   const PhotosUrl = "https://jsonplaceholder.typicode.com/photos";
@@ -31,7 +31,9 @@ function App() {
                 if (item.albumId === filterAlbum.id) {
                   return (
                     <div>
+                      <img src={item.thumbnailUrl} alt={item.ttle}></img>
                       <p>{item.title}</p>
+                      <small>{item.url}</small>
                       <p>${Math.floor(Math.random() * 250) + 50}</p>
                     </div>
                   );
@@ -45,16 +47,3 @@ function App() {
 }
 
 export default App;
-
-// {/* <div key={album.id}>
-// <h5>{album.title}</h5>
-// </div> */}
-
-// {
-//   /* <h6>{Math.floor(Math.random() * 250) + 50}</h6> */
-// }
-// {
-//   /* {PhotoData.map((photo) => {
-//               return <div></div>;
-//             })} */
-// }
