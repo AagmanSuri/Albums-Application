@@ -32,7 +32,6 @@ function App() {
           return (
             <div key={filterAlbum.id}>
               <h1>{filterAlbum.title} </h1>
-
               {PhotoData.map((item) => {
                 if (item.albumId === filterAlbum.id) {
                   return (
