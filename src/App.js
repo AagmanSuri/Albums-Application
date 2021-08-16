@@ -14,10 +14,16 @@ function App() {
       .then((response) => response.json())
       .then((data) => setPhotoData(data));
   }, []);
-
-  console.log(PhotoData);
+  const BtnHandeler = (e) => {
+    console.log(e.target.value);
+    const newList = PhotoData.filter((item) => {
+      return item.title.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    setPhotoData(newList);
+  };
   return (
-    <div className="App">
+    <div>
+      <input onChange={BtnHandeler}></input>
       {albumData
         .filter((album) => {
           return album.id <= 5;
@@ -30,10 +36,10 @@ function App() {
               {PhotoData.map((item) => {
                 if (item.albumId === filterAlbum.id) {
                   return (
-                    <div>
+                    <div key={item.id}>
                       <img src={item.thumbnailUrl} alt={item.ttle}></img>
                       <p>{item.title}</p>
-                      <small>{item.url}</small>
+                      <a href={item.url}>{item.url}</a>
                       <p>${Math.floor(Math.random() * 250) + 50}</p>
                     </div>
                   );
